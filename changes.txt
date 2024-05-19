@@ -1,0 +1,7 @@
+/D:/mosipintern/pre-registration/pre-registration/pre-registration-datasync-service/src/main/java/io/mosip/preregistration/datasync/service/util/DataSyn
+cServiceUtil.java:[583,59] 
+
+JSONObject obj = new JSONObject();
+			for (Map.Entry<String, Object> entry : finalMap.entrySet()) {
+				obj.put(entry.getKey(), entry.getValue());
+			}

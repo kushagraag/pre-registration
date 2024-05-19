@@ -578,9 +578,14 @@ public class DataSyncServiceUtil {
 					.jsonStringToJavaMap(JsonUtils.javaObjectToJsonString(identityJson));
 			Map<String, Object> finalMap = prepareIdentityMap(documentEntityList, inputFile, identityMap,
 					preRegistrationDTO.getPreRegistrationId());
+
+			JSONObject obj = new JSONObject();
+			for (Map.Entry<String, Object> entry : finalMap.entrySet()) {
+				obj.put(entry.getKey(), entry.getValue());
+			}
 			log.info("sessionId", "idType", "id",
 					"In archivingFiles method of datasync service util, Json file content - "
-							+ new JSONObject(finalMap).toJSONString());
+							+ obj.toJSONString());
 			String encryptionPublickey = getEncryptionKey(machineId);
 			inputFile.put("ID.json", mapper.writeValueAsBytes(finalMap));
 			preRegArchiveDTO.setZipBytes(encryptFile(getCompressed(inputFile), encryptionPublickey));
